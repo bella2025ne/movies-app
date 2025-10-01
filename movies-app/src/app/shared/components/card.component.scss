@@ -1,0 +1,20 @@
+/* src/app/shared/components/card.component.scss */
+.movie-card {
+  background: #111827;
+  color: #e5e7eb;
+  border-radius: 12px;
+  overflow: hidden;
+}
+.title {
+  margin: 8px 0 6px;
+  font-size: 1rem;
+  line-height: 1.2;
+}
+.ov {
+  margin: 0;
+  font-size: 0.85rem;
+  color: #a2acc3;
+  display: -webkit-box;  
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}

@@ -1,0 +1,40 @@
+<!-- src/app/pages/home/home.component.html -->
+<section class="home">
+
+  <mat-toolbar>
+    <span class="brand">Movies App</span>
+    <span class="spacer"></span>
+
+    <mat-form-field appearance="outline" class="search">
+      <mat-label>Buscar</mat-label>
+      <input matInput [formControl]="q" placeholder="Título..." />
+      <button mat-icon-button matSuffix disabled>
+        <mat-icon>search</mat-icon>
+      </button>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline" class="sel">
+      <mat-label>Orden</mat-label>
+      <mat-select [formControl]="sortKey" (selectionChange)="applySort()">
+        <mat-option value="pop">Popularidad</mat-option>
+        <mat-option value="rating">Rating</mat-option>
+        <mat-option value="date">Fecha</mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline" class="sel">
+      <mat-label>Dirección</mat-label>
+      <mat-select [formControl]="sortDir" (selectionChange)="applySort()">
+        <mat-option value="desc">Desc</mat-option>
+        <mat-option value="asc">Asc</mat-option>
+      </mat-select>
+    </mat-form-field>
+  </mat-toolbar>
+
+  <div class="status" *ngIf="loading">Cargando…</div>
+  <div class="status" *ngIf="!loading && movies.length === 0">Sin resultados</div>
+
+  <div class="grid" *ngIf="!loading && movies.length > 0">
+    <app-movie-card *ngFor="let m of movies" [movie]="m"></app-movie-card>
+  </div>
+</section>
