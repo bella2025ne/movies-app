@@ -18,6 +18,7 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatButtonModule } from '@angular/material/button';
 import { MatGridListModule } from '@angular/material/grid-list';
 import { MatTooltipModule } from '@angular/material/tooltip';
+import { GroupByPrimaryGenrePipe } from '../../shared/pipes/group-by-primary-genre.pipe';
 
 type SortKey = 'pop' | 'rating' | 'date';
 type SortDir = 'desc' | 'asc';
@@ -29,7 +30,7 @@ type SortDir = 'desc' | 'asc';
     CommonModule, RouterModule, ReactiveFormsModule,
     CardComponent,
     MatToolbarModule, MatIconModule, MatFormFieldModule, MatInputModule,
-    MatSelectModule, MatButtonModule, MatGridListModule, MatTooltipModule
+    MatSelectModule, MatButtonModule, MatGridListModule, MatTooltipModule,GroupByPrimaryGenrePipe
   ],
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.scss']
@@ -38,6 +39,9 @@ export class HomeComponent implements OnInit {
 
   loading = false;
   movies: Movie[] = [];
+  genreMap = new Map<number, string>();
+
+  trackById(_: number, m: Movie) { return m.id; }
 
   // UI controls
   q = new FormControl('', { nonNullable: true });

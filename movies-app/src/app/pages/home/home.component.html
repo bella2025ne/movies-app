@@ -1,6 +1,5 @@
 <!-- src/app/pages/home/home.component.html -->
 <section class="home">
-
   <mat-toolbar>
     <span class="brand">Movies App</span>
     <span class="spacer"></span>
@@ -34,7 +33,10 @@
   <div class="status" *ngIf="loading">Cargando…</div>
   <div class="status" *ngIf="!loading && movies.length === 0">Sin resultados</div>
 
-  <div class="grid" *ngIf="!loading && movies.length > 0">
-    <app-movie-card *ngFor="let m of movies" [movie]="m"></app-movie-card>
-  </div>
+  <ng-container *ngFor="let g of movies | groupByPrimaryGenre">
+    <h2>{{ g.name }}</h2>
+    <div class="grid">
+      <app-movie-card *ngFor="let m of g.movies; trackBy: trackById" [movie]="m"></app-movie-card>
+    </div>
+  </ng-container>
 </section>

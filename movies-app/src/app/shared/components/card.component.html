@@ -2,6 +2,6 @@
     <img mat-card-image [src]="movie.poster_path!" [alt]="movie.title" loading="lazy">
     <mat-card-content>
       <h3 class="title" matTooltip="{{ movie.title }}">{{ movie.title }}</h3>
-      <p class="ov">{{ movie.overview }}</p>
+      <p *ngFor="let g of movie.genreNames">{{ g }}</p>
     </mat-card-content>
   </mat-card>
