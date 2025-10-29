@@ -32,7 +32,8 @@
             "styles": [
               "src/custom-theme.scss",
               "src/styles.scss"
-            ]
+            ],
+            "outputPath": "dist/movies-app"
           },
           "configurations": {
             "production": {
